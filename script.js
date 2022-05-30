@@ -35,11 +35,11 @@ btnAdd.forEach(btn => {
 // WriteProductCount();
 
 function WriteProductCount() {
-    if(localStorage.getItem("basket")!=null){
+    if (localStorage.getItem("basket") != null) {
         let arr = JSON.parse(localStorage.getItem("basket"));
-        let totalCount=0;
-        arr.map(product=>{
-            totalCount+=product.count;
+        let totalCount = 0;
+        arr.map(product => {
+            totalCount += product.count;
         })
         productCount.innerText = totalCount;
     }

@@ -66,23 +66,32 @@ if (localStorage.getItem("basket") != null) {
         minus.onclick = function () {
             if (product.count > 1) {
                 product.count--
-                console.log(product.count);
                 tdCount.innerHTML = `${product.count}`
                 tdCount.prepend(minusBtn)
                 tdCount.append(plusBtn)
+                tdSubTotal.innerText = product.count * product.price;
+                sumTotalPrice -= parseFloat(product.price);
+                totalPrice.innerText = sumTotalPrice;
+                localStorage.setItem("basket", JSON.stringify(arr))
+                WriteProductCount();
             }
             else {
                 tr.remove()
             }
-
+            localStorage.setItem("basket", JSON.stringify(arr))
+            WriteProductCount();
         }
 
         plus.onclick = function () {
             product.count++
-            console.log(product.count);
             tdCount.innerHTML = `${product.count}`
             tdCount.prepend(minusBtn)
             tdCount.append(plusBtn)
+            tdSubTotal.innerText = product.count * product.price;
+            sumTotalPrice += parseFloat(product.price);
+            totalPrice.innerText = sumTotalPrice;
+            localStorage.setItem("basket", JSON.stringify(arr))
+            WriteProductCount();
         }
 
         removeBtn.onclick = function () {
